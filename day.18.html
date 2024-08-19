@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table with Update and Delete Buttons</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 14px;
+        }
+        .update-btn {
+            background-color: #4CAF50; /* Green */
+        }
+        .delete-btn {
+            background-color: #f44336; /* Red */
+        }
+    </style>
+</head>
+<body>
+
+<h2>Contact List</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Omaima</td>
+            <td>Haripur</td>
+            <td>032243455</td>
+            <td>
+                <button class="update-btn" onclick="updateRow(this)">Update</button>
+                <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Sahar</td>
+            <td>Islamabad</td>
+            <td>0349876543</td>
+            <td>
+                <button class="update-btn" onclick="updateRow(this)">Update</button>
+                <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+            </td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+
+<script>
+    function updateRow(button) {
+        // Get the row to update
+        const row = button.closest('tr');
+        const name = row.cells[0].textContent;
+        const address = row.cells[1].textContent;
+        const contact = row.cells[2].textContent;
+        
+        // Example: show a prompt with the current details
+        const newName = prompt('Update Name:', name);
+        const newAddress = prompt('Update Address:', address);
+        const newContact = prompt('Update Contact:', contact);
+        
+        // Update the row with new values
+        if (newName !== null) row.cells[0].textContent = newName;
+        if (newAddress !== null) row.cells[1].textContent = newAddress;
+        if (newContact !== null) row.cells[2].textContent = newContact;
+    }
+
+    function deleteRow(button) {
+        // Get the row to delete
+        const row = button.closest('tr');
+        
+        // Remove the row from the table
+        row.remove();
+    }
+</script>
+
+</body>
+</html>
